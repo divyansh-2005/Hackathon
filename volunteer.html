@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteer Registration Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        width: 100%;
+        max-width: 600px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        margin-top: 0;
+    }
+    label {
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
+    textarea {
+        height: 100px;
+    }
+    button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Volunteer Registration Form</h2>
+    <form id="volunteerForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" required></textarea>
+
+        <label for="registrationType">Registration Type:</label>
+        <select id="registrationType" name="registrationType" onchange="showAdditionalFields()">
+            <option value="individual">Individual</option>
+            <option value="group">Group</option>
+        </select>
+
+        <div id="groupDetails" style="display: none;">
+            <label for="numberOfPeople">Number of People (in group):</label>
+            <input type="number" id="numberOfPeople" name="numberOfPeople">
+
+            <label for="groupLeaderName">Group Leader Name:</label>
+            <input type="text" id="groupLeaderName" name="groupLeaderName">
+        </div>
+
+        <label for="skills">Skills (comma-separated):</label>
+        <input type="text" id="skills" name="skills" required>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+    // Function to handle form submission
+    document.getElementById("volunteerForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get form data
+        const formData = new FormData(this);
+
+        // Display form data (you can replace this with your actual form submission logic)
+        for (const [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+        }
+
+        // You can add your AJAX form submission logic here
+    });
+
+    // Function to show additional fields based on registration type
+    function showAdditionalFields() {
+        const registrationType = document.getElementById("registrationType").value;
+        const groupDetails = document.getElementById("groupDetails");
+
+        if (registrationType === "group") {
+            groupDetails.style.display = "block";
+        } else {
+            groupDetails.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
