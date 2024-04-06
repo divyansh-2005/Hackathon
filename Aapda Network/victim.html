@@ -8,8 +8,10 @@
 </head>
 <body>
     <h1>Emergency Reporting System</h1>
-    <button onclick="openForm('high')">High</button>
-    <button onclick="openForm('low')">Low</button>
+    <div class="button-container">
+        <button onclick="openForm('high')">High</button>
+        <button onclick="openForm('low')">Low</button>
+    </div>
 
     <div id="formContainer" class="form-container" style="display: none;">
         <!-- Form content will be dynamically replaced here -->
@@ -22,31 +24,33 @@
 
             if (urgency === 'high') {
                 formHtml = `
-                <h2>Type of Emergency</h2>
-                            <label>
-                                <input type="radio" name="emergencyType" value="fire"> Fire <br>
-                            </label>
-                            <label>
-                                <input type="radio" name="emergencyType" value="earthquake"> Earthquake<br>
-                            </label>
-                            <label>
-                                <input type="radio" name="emergencyType" value="medical"> Medical Emergency<br>
-                            </label>
-                            <label>
-                                <input type="radio" name="emergencyType" value="animal_attack"> Animal Attack<br>
-                            </label>
-                    <div class="form-section">
-                        <h2>Upload Photo</h2>
-                        <input type="file" name="photo" required>
+                    <div class="container">
+                        <h2>Type of Emergency</h2>
+                        <label>
+                            <input type="radio" name="emergencyType" value="fire"> Fire <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="emergencyType" value="earthquake"> Earthquake<br>
+                        </label>
+                        <label>
+                            <input type="radio" name="emergencyType" value="medical"> Medical Emergency<br>
+                        </label>
+                        <label>
+                            <input type="radio" name="emergencyType" value="animal_attack"> Animal Attack<br>
+                        </label>
+                        <div class="form-section">
+                            <h2>Upload Photo</h2>
+                            <input type="file" name="photo" required>
+                        </div>
+                        <button type="submit">Submit</button>
                     </div>
-                    <button type="submit">Submit</button>
                 `;
             } else if (urgency === 'low') {
                 formHtml = `
                     <div class="container">
-                        <h2>High Urgency Form</h2>
-                        <form id="highUrgencyForm">
-                            <!-- High urgency form fields go here -->
+                        <h2>Low Urgency Form</h2>
+                        <form id="lowUrgencyForm">
+                            <!-- Low urgency form fields go here -->
                             <label for="name">Name:</label><br />
                             <input type="text" id="name" name="name" required />
 
